@@ -14,9 +14,10 @@ LFT_FUNCTIONS = ft_putstr.c ft_putnbr.c ft_atoi.c ft_strcpy.c ft_strncpy.c \
 	ft_strstr.c ft_strcmp.c ft_strncmp.c ft_strupcase.c ft_strlowcase.c \
 	ft_strcapitalize.c ft_str_is_alpha.c ft_str_is_numeric.c \
 	ft_str_is_lowercase.c ft_str_is_uppercase.c ft_str_is_printable.c \
-	ft_str_is_printable.c ft_strcat.c ft_strncat.c ft_strlcat.c
+	ft_str_is_printable.c ft_strcat.c ft_strncat.c ft_strlcat.c \
+	ft_putchar.c
 
-OBJECTS = 	$(patsubst %,objs/ft_%.o,$(LFT_FUNCTIONS))
+OBJECTS = 	$(patsubst %.c,objs/%.o,$(LFT_FUNCTIONS))
 
 OBJ_DIR = ./objs
 
@@ -40,7 +41,7 @@ so: $(OBJECTS)
 	$(CC) $(SOFLAGS) -o $(DYNN) $(OBJECTS)
 
 objs/%.o: %.c | $(OBJ_DIR)
-	$(CC) $(FLAGS) -ilibft.h -c -o $@ $<
+	$(CC) $(FLAGS) -include libft.h -c -o $@ $<
 
 clean:
 	rm -f $(OBJECTS)
