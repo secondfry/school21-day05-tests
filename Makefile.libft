@@ -17,11 +17,13 @@ LFT_FUNCTIONS = ft_putstr.c ft_putnbr.c ft_atoi.c ft_strcpy.c ft_strncpy.c \
 	ft_str_is_printable.c ft_strcat.c ft_strncat.c ft_strlcat.c \
 	ft_putchar.c
 
-OBJECTS = 	$(patsubst %.c,objs/%.o,$(LFT_FUNCTIONS))
+SAD_FUNCTIONS = $(wildcard *.c)
+
+OBJECTS = $(patsubst %.c,objs/%.o,$(SAD_FUNCTIONS))
 
 OBJ_DIR = ./objs
 
-FLAGS = -Wall -Wextra -Werror -O1 -funroll-loops
+CFLAGS = -Wall -Wextra -Werror -O1 -funroll-loops
 SOFLAGS = -fPIC -shared
 
 NAME = libft.a
@@ -41,7 +43,7 @@ so: $(OBJECTS)
 	$(CC) $(SOFLAGS) -o $(DYNN) $(OBJECTS)
 
 objs/%.o: %.c | $(OBJ_DIR)
-	$(CC) $(FLAGS) -include libft.h -c -o $@ $<
+	$(CC) $(CFLAGS) -include libft.h -c -o $@ $<
 
 clean:
 	rm -f $(OBJECTS)
