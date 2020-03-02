@@ -13,7 +13,7 @@ weak: clean getTests prepareFiles prepareWeakFiles makeTests runTests
 
 getTests:
 	@echo ${CYAN} "Getting libft-unit-test" ${DEFAULT} ${BLUE}
-	[ -e libft-unit-test ] || git clone https://github.com/secondfry/libft-unit-test.git
+	[ -e libft-unit-test ] || git clone https://github.com/secondfry/libft-unit-test.git -b old
 	@echo -n ${DEFAULT}
 
 prepareFiles:
