@@ -9,6 +9,7 @@ BLUE = "\033[0;34m"
 CYAN = "\033[0;36m"
 
 all: clean getTests prepareFiles makeTests runTests
+weak: clean getTests prepareFiles prepareWeakFiles makeTests runTests
 
 getTests:
 	@echo ${CYAN} "Getting libft-unit-test" ${DEFAULT} ${BLUE}
@@ -44,6 +45,11 @@ prepareFiles:
 	cp -a libft.h libft/
 	@echo -n ${DEFAULT}
 
+prepareWeakFiles:
+	@echo ${CYAN} "Making libft weak – ignoring errors" ${DEFAULT} ${BLUE}
+	cp -a Makefile.weak.libft libft/Makefile
+	@echo -n ${DEFAULT}
+
 makeTests:
 	@echo ${CYAN} "Making libft-unit-test" ${DEFAULT} ${BLUE}
 	${MAKE} -C libft-unit-test
@@ -67,4 +73,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: clean getTests prepareFiles makeTests runTests fclean re
+.PHONY: clean getTests prepareFiles prepareWeakFiles makeTests runTests fclean re
