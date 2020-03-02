@@ -51,8 +51,11 @@ prepareWeakFiles:
 	@echo -n ${DEFAULT}
 
 makeTests:
-	@echo ${CYAN} "Making libft-unit-test" ${DEFAULT} ${BLUE}
-	${MAKE} -C libft-unit-test
+	@echo ${CYAN} "Making libft-unit-test [libclean]" ${DEFAULT} ${BLUE}
+	${MAKE} -C libft-unit-test libclean
+	@echo -n ${DEFAULT}
+	@echo ${CYAN} "Making libft-unit-test [all]" ${DEFAULT} ${BLUE}
+	${MAKE} -C libft-unit-test all
 	@echo -n ${DEFAULT}
 
 runTests:
